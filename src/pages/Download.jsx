@@ -9,8 +9,11 @@ export default function Download() {
       version: "v1.0.0",
       features: ["AES-256 Encryption", "Offline Mode", "Cloud Backup"],
       downloads: [
-        { label: "Google Play Store", link: "https://play.google.com/store/apps/details?id=com.docsbox" },
-        { label: "Direct Download", link: "/app-debug.apk" }
+        {
+          label: "Google Play Store",
+          link: "https://play.google.com/store/apps/details?id=com.docsbox",
+        },
+        { label: "Direct Download", link: "/app-debug.apk" },
       ],
       color: "from-green-500 to-emerald-600",
     },
@@ -158,9 +161,19 @@ export default function Download() {
                         <a
                           key={i}
                           href={download.link}
-                          target={download.label === "Google Play Store" ? "_blank" : "_self"}
-                          rel={download.label === "Google Play Store" ? "noopener noreferrer" : ""}
-                          download={download.label === "Direct Download" ? true : false}
+                          target={
+                            download.label === "Google Play Store"
+                              ? "_blank"
+                              : "_self"
+                          }
+                          rel={
+                            download.label === "Google Play Store"
+                              ? "noopener noreferrer"
+                              : ""
+                          }
+                          download={
+                            download.label === "Direct Download" ? true : false
+                          }
                           className="py-3 px-6 rounded-lg font-bold text-center transition-all bg-white text-gray-900 hover:shadow-lg hover:scale-105"
                         >
                           {download.label}

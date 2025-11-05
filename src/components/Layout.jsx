@@ -161,10 +161,10 @@ export default function Layout({ children }) {
               <ul className="space-y-2 text-sm text-purple-300">
                 <li>
                   <a
-                    href="#"
+                    href="/privacy"
                     className="hover:text-white transition duration-200"
                   >
-                    Privacy
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
