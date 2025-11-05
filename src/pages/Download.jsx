@@ -8,7 +8,10 @@ export default function Download() {
       description: "Get DocsBox from Google Play Store",
       version: "v1.0.0",
       features: ["AES-256 Encryption", "Offline Mode", "Cloud Backup"],
-      link: "https://play.google.com/store",
+      downloads: [
+        { label: "Google Play Store", link: "https://play.google.com/store/apps/details?id=com.docsbox" },
+        { label: "Direct Download", link: "/app-debug.apk" }
+      ],
       color: "from-green-500 to-emerald-600",
     },
     {
@@ -17,7 +20,7 @@ export default function Download() {
       description: "Access DocsBox from your browser",
       version: "Coming Soon",
       features: ["No Installation", "Cloud Sync", "Full Features"],
-      link: "#",
+      downloads: [],
       color: "from-blue-500 to-blue-600",
       disabled: true,
     },
@@ -27,7 +30,7 @@ export default function Download() {
       description: "Coming to Apple App Store",
       version: "Coming Soon",
       features: ["iPhone Support", "iPad Optimized", "iCloud Sync"],
-      link: "#",
+      downloads: [],
       color: "from-gray-500 to-gray-700",
       disabled: true,
     },
@@ -142,17 +145,29 @@ export default function Download() {
                     </ul>
                   </div>
 
-                  <a
-                    href={platform.link}
-                    disabled={platform.disabled}
-                    className={`py-3 px-6 rounded-lg font-bold text-center transition-all ${
-                      platform.disabled
-                        ? "bg-white text-gray-700 cursor-not-allowed opacity-80"
-                        : "bg-white text-gray-900 hover:shadow-lg hover:scale-105"
-                    }`}
-                  >
-                    {platform.disabled ? "Coming Soon" : "Download"}
-                  </a>
+                  {platform.disabled ? (
+                    <button
+                      disabled
+                      className="py-3 px-6 rounded-lg font-bold text-center transition-all bg-white text-gray-700 cursor-not-allowed opacity-80"
+                    >
+                      Coming Soon
+                    </button>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      {platform.downloads.map((download, i) => (
+                        <a
+                          key={i}
+                          href={download.link}
+                          target={download.label === "Google Play Store" ? "_blank" : "_self"}
+                          rel={download.label === "Google Play Store" ? "noopener noreferrer" : ""}
+                          download={download.label === "Direct Download" ? true : false}
+                          className="py-3 px-6 rounded-lg font-bold text-center transition-all bg-white text-gray-900 hover:shadow-lg hover:scale-105"
+                        >
+                          {download.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Shine effect */}
