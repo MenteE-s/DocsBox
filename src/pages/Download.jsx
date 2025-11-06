@@ -13,7 +13,10 @@ export default function Download() {
           label: "Google Play Store",
           link: "https://play.google.com/store/apps/details?id=com.docsbox",
         },
-        { label: "Direct Download", link: "/app-debug.apk" },
+        {
+          label: "Direct Download",
+          link: "https://github.com/MenteE-s/DocsBox/raw/main/public/app-release.apk",
+        },
       ],
       color: "from-green-500 to-emerald-600",
     },
