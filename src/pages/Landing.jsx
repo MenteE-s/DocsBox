@@ -69,7 +69,7 @@ export default function Landing() {
               className="text-white"
               style={{ animation: "fadeIn 0.8s ease-out" }}
             >
-              <div className="inline-block px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-full mb-6 border border-white border-opacity-30">
+              <div className=" text-black inline-block px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-full mb-6 border border-white border-opacity-30">
                 <span className="text-sm font-semibold">
                   🎯 Secure Document Management
                 </span>
@@ -97,7 +97,7 @@ export default function Landing() {
                 </a>
                 <a
                   href="/about"
-                  className="px-8 py-4 bg-white bg-opacity-20 text-white rounded-lg font-bold text-lg hover:bg-opacity-30 transition-all border border-white border-opacity-40 backdrop-blur-md text-center"
+                  className="px-8 py-4 bg-white bg-opacity-20 text-purple-600 rounded-lg font-bold text-lg hover:bg-opacity-30 transition-all border border-white border-opacity-40 backdrop-blur-md text-center"
                 >
                   Learn More
                 </a>
