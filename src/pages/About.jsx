@@ -260,7 +260,8 @@ export default function About() {
               Meet Our Team
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A dedicated team of developers, designers, and engineers passionate about security
+              A dedicated team of developers, designers, and engineers
+              passionate about security
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -271,7 +272,9 @@ export default function About() {
               >
                 {/* Avatar with gradient background */}
                 <div className="mb-4 relative">
-                  <div className={`w-20 h-20 mx-auto mb-3 bg-gradient-to-br ${member.color} rounded-full flex items-center justify-center text-4xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-20 h-20 mx-auto mb-3 bg-gradient-to-br ${member.color} rounded-full flex items-center justify-center text-4xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                  >
                     {member.avatar}
                   </div>
                   {member.verified && (
