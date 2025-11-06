@@ -222,7 +222,7 @@ export default function Landing() {
             </a>
             <a
               href="/contact"
-              className="px-8 py-4 bg-white bg-opacity-20 text-white rounded-lg font-bold text-lg hover:bg-opacity-30 transition-all border border-white border-opacity-40 backdrop-blur-md"
+              className="px-8 py-4 bg-white bg-opacity-20 text-purple-600 rounded-lg font-bold text-lg hover:bg-opacity-30 transition-all border border-white border-opacity-40 backdrop-blur-md"
             >
               Get Support
             </a>

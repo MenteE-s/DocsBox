@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { blurCircles } from "@/constants/theme";
 
 export default function Contact() {
@@ -10,6 +11,8 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -18,13 +21,51 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    // EmailJS configuration - Real EmailJS credentials
+    const serviceId = "service_rlac4th";
+    const templateId = "template_wczi6ir";
+    const publicKey = "Bwe4JKCqvjzm4RNGz";
+
+    setLoading(true);
+    setError("");
+
+    try {
+      // Try EmailJS first
+      emailjs.init(publicKey);
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("EmailJS failed, opening email client:", error);
+
+      // Fallback to mailto link
+      const subject = encodeURIComponent(`Contact Form: ${formData.subject}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+          `Email: ${formData.email}\n\n` +
+          `Message:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:support@docsbox.app?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.open(mailtoLink, "_blank");
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -175,11 +216,19 @@ export default function Contact() {
                       />
                     </div>
 
+                    {/* Error Message */}
+                    {error && (
+                      <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-red-600 text-sm">{error}</p>
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full py-3 px-6 bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105"
+                      disabled={loading}
+                      className="w-full py-3 px-6 bg-linear-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                     >
-                      Send Message
+                      {loading ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 )}

@@ -200,13 +200,13 @@ export default function Layout({ children }) {
                 Twitter
               </a>
               <a
-                href="#"
+                href="https://github.com/MenteE-s"
                 className="hover:text-purple-200 transition duration-200"
               >
                 GitHub
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/mentee1/"
                 className="hover:text-purple-200 transition duration-200"
               >
                 LinkedIn
