@@ -1,4 +1,5 @@
 import { blurCircles } from "@/constants/theme";
+import posterImage from "@/assets/images/poster.png";
 
 export default function About() {
   const securityFeatures = [
@@ -82,6 +83,45 @@ export default function About() {
     },
   ];
 
+  const teamMembers = [
+    {
+      name: "Founder & Full-Stack Developer",
+      tag: "Full-Stack Developer",
+      role: "Full-Stack Developer & AI Engineer • Python, Flask, React.js, TailwindCSS, PostgreSQL • Generative AI • Building Smart, Scalable Web & AI Solutions",
+      avatar: "👨‍💼",
+      verified: true,
+      color: "from-blue-500 to-blue-600",
+      skills: ["Python", "React.js", "Flask", "PostgreSQL"],
+    },
+    {
+      name: "Backend Engineer",
+      tag: "Backend Lead",
+      role: "Python Developer & Data Scientist • ML & Data Science Expert • Transforming data into meaningful insights • Specialized in scalable backend solutions",
+      avatar: "�‍💻",
+      verified: true,
+      color: "from-purple-500 to-purple-600",
+      skills: ["Python", "Data Science", "Backend", "PostgreSQL"],
+    },
+    {
+      name: "MenteE",
+      tag: "Design Lead & Founder",
+      role: "Graphics Designer & UI/UX Designer • Figma Expert • Adobe XD Proficient • Prototyping Specialist • Creating Innovative Designs for the Future",
+      avatar: "👩‍🎨",
+      verified: true,
+      color: "from-pink-500 to-pink-600",
+      skills: ["Figma", "Adobe XD", "UI Design", "Prototyping"],
+    },
+    {
+      name: "ML Engineer",
+      tag: "ML/Data Engineer",
+      role: "Data Analyst & ML Engineer • Python, Pandas, NumPy, Matplotlib • Data Cleaning, Visualization & Machine Learning • Building intelligent solutions",
+      avatar: "🤖",
+      verified: true,
+      color: "from-green-500 to-green-600",
+      skills: ["Python", "ML", "Data Analysis", "Scikit-Learn"],
+    },
+  ];
+
   return (
     <div className="relative">
       {/* Decorative blur circles */}
@@ -138,13 +178,11 @@ export default function About() {
             <div className="relative h-96">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl shadow-lg opacity-60" />
               <div className="absolute inset-4 bg-white rounded-3xl shadow-md flex flex-col items-center justify-center p-8 text-center">
-                <div className="text-6xl mb-4">🎯</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Security + Simplicity
-                </h3>
-                <p className="text-gray-600">
-                  The perfect balance for your documents
-                </p>
+                <img
+                  src={posterImage}
+                  alt="DocsBox Poster"
+                  className="w-full h-full object-cover rounded-2xl"
+                />
               </div>
             </div>
           </div>
@@ -207,6 +245,67 @@ export default function About() {
                     </h3>
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section - Visible with team members and verification badges */}
+      <section className="relative py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              A dedicated team of developers, designers, and engineers passionate about security
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member, idx) => (
+              <div
+                key={idx}
+                className="group p-6 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center hover:-translate-y-3 border border-gray-100 hover:border-purple-200 flex flex-col h-full"
+              >
+                {/* Avatar with gradient background */}
+                <div className="mb-4 relative">
+                  <div className={`w-20 h-20 mx-auto mb-3 bg-gradient-to-br ${member.color} rounded-full flex items-center justify-center text-4xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    {member.avatar}
+                  </div>
+                  {member.verified && (
+                    <div className="absolute top-0 right-1/4 transform translate-x-1/2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shadow-md">
+                      ✓
+                    </div>
+                  )}
+                </div>
+
+                {/* Name and Title */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {member.name}
+                  </h3>
+                  <div className="inline-block px-3 py-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full text-xs font-semibold">
+                    {member.tag}
+                  </div>
+                </div>
+
+                {/* Role description */}
+                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                  {member.role}
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-2 justify-center mt-auto">
+                  {member.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="inline-block px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs font-medium hover:bg-gray-200 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
