@@ -15,7 +15,7 @@ export default function Download() {
         },
         {
           label: "Direct Download",
-          link: "https://github.com/MenteE-s/DocsBox/raw/main/public/DocsBox.apk",
+          link: "https://github.com/MenteE-s/DocsBox/raw/main/public/docxbox.apk",
         },
       ],
       color: "from-green-500 to-emerald-600",
